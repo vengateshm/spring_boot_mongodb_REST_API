@@ -37,4 +37,18 @@ class ExpenseController(private val expenseService: ExpenseService) {
         expenseService.deleteById(id)
         return ResponseEntity(HttpStatus.OK)
     }
+
+    @GetMapping()
+    fun findByCategoryId(
+        @RequestParam(
+            name = "categoryId",
+            required = false
+        ) categoryId: String
+    ): ResponseEntity<ExpenseResponse> {
+        val expenses = expenseService.findByCategoryId(categoryId)
+        return ResponseEntity(ExpenseResponse().apply {
+            this.status = true
+            this.expenses = expenses
+        }, HttpStatus.OK)
+    }
 }

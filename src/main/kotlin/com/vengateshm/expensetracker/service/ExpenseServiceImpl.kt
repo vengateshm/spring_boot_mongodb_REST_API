@@ -31,4 +31,10 @@ class ExpenseServiceImpl(private val expenseRepository: ExpenseRepository) : Exp
     override fun deleteById(id: String) {
         expenseRepository.deleteById(id)
     }
+
+    override fun findByCategoryId(id: String): List<ExpenseDto> {
+        return expenseRepository.findByCategoryId(id).map { expense ->
+            ExpenseDto(expense.expenseId, expense.categoryId, expense.description, expense.amount, expense.dateAdded)
+        }
+    }
 }

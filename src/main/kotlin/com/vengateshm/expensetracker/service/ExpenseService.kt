@@ -7,4 +7,5 @@ interface ExpenseService {
     fun getAll(): List<ExpenseDto>
     fun deleteAll()
     fun deleteById(id: String)
+    fun findByCategoryId(id: String): List<ExpenseDto>
 }
