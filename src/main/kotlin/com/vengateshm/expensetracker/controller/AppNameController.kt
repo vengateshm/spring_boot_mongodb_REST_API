@@ -1,10 +1,12 @@
 package com.vengateshm.expensetracker.controller
 
 import org.springframework.http.MediaType
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
+/*
 @RestController
 @RequestMapping("/")
 class AppNameController {
@@ -21,5 +23,13 @@ class AppNameController {
 <h5>v1.0.0</h5>
 </body>
 </html>""";
+    }
+}*/
+
+@Controller // Not a rest controller we return html file as response
+class AppNameController {
+    @GetMapping("/")
+    fun appName(): String {
+        return "appname"
     }
 }

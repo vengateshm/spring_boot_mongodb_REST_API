@@ -38,7 +38,7 @@ class ExpenseController(private val expenseService: ExpenseService) {
         return ResponseEntity(HttpStatus.OK)
     }
 
-    @GetMapping()
+    @GetMapping
     fun findByCategoryId(
         @RequestParam(
             name = "categoryId",
