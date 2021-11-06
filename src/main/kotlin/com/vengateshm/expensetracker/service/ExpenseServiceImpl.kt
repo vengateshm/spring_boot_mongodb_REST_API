@@ -2,20 +2,20 @@ package com.vengateshm.expensetracker.service
 
 import com.vengateshm.expensetracker.dto.ExpenseDto
 import com.vengateshm.expensetracker.model.Expense
+import com.vengateshm.expensetracker.model.toExpenseDto
 import com.vengateshm.expensetracker.repository.ExpenseRepository
 import org.springframework.stereotype.Service
 
 @Service
 class ExpenseServiceImpl(private val expenseRepository: ExpenseRepository) : ExpenseService {
-    override fun create(expenseDto: ExpenseDto) {
-        Expense(
+    override fun create(expenseDto: ExpenseDto): ExpenseDto {
+        val expense = Expense(
             categoryId = expenseDto.categoryId,
             description = expenseDto.description,
             amount = expenseDto.amount,
             dateAdded = expenseDto.dateAdded
-        ).also {
-            expenseRepository.save(it)
-        }
+        )
+        return expenseRepository.save(expense).toExpenseDto()
     }
 
     override fun getAll(): List<ExpenseDto> {

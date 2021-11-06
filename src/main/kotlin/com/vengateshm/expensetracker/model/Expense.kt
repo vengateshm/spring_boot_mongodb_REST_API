@@ -1,5 +1,6 @@
 package com.vengateshm.expensetracker.model
 
+import com.vengateshm.expensetracker.dto.ExpenseDto
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.TypeAlias
 import org.springframework.data.mongodb.core.mapping.Document
@@ -16,3 +17,12 @@ data class Expense(
     val amount: Double,
     val dateAdded: String
 )
+
+fun Expense.toExpenseDto() =
+    ExpenseDto(
+        expenseId = "1",
+        categoryId = "1",
+        description = "Milk & Eggs",
+        amount = 200.0,
+        dateAdded = "06-11-2021"
+    )
